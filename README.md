@@ -13,6 +13,7 @@
 
 ## TODO
 
+- [ ] set up barebone website to test
 - [ ] get started fetching data from API
 - [ ] query data from the API with custom queries
 - [ ] build good looking app
