@@ -1,5 +1,5 @@
-const season = async () => {
-	let final = await fetch('http://ergast.com/api/f1/current.json')
+const fetchApi = async (url) => {
+	let final = await fetch(url)
 		.then((response) => {
 			if (response.ok) {
 				return response.json();
@@ -11,37 +11,24 @@ const season = async () => {
 		});
 
 	console.log(final);
-	return final.MRData.RaceTable.Races;
+	return final;
+};
+
+const season = async () => {
+	const result = await fetchApi('http://ergast.com/api/f1/current.json');
+	return result.MRData.RaceTable.Races;
 };
 
 const drivers = async () => {
-	let final = await fetch('http://ergast.com/api/f1/current/drivers.json')
-		.then((response) => {
-			if (response.ok) {
-				return response.json();
-			}
-			throw response;
-		})
-		.catch((error) => {
-			console.error('Es ist ein fehler aufgetreten... ', error);
-		});
-
-	console.log(final);
-	return final.MRData.DriverTable.Drivers;
+	const result = await fetchApi(
+		'http://ergast.com/api/f1/current/drivers.json'
+	);
+	return result.MRData.DriverTable.Drivers;
 };
 
 const constructors = async () => {
-	let final = await fetch('http://ergast.com/api/f1/current/constructors.json')
-		.then((response) => {
-			if (response.ok) {
-				return response.json();
-			}
-			throw response;
-		})
-		.catch((error) => {
-			console.error('Es ist ein fehler aufgetreten... ', error);
-		});
-
-	console.log(final);
-	return final.MRData.ConstructorTable.Constructors;
+	const result = await fetchApi(
+		'http://ergast.com/api/f1/current/constructors.json'
+	);
+	return result.MRData.ConstructorTable.Constructors;
 };

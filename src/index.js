@@ -61,7 +61,18 @@ window.onhashchange = async () => {
 				'<ul>' +
 				drivers_result
 					.map((driver) => {
-						return '<li class="driver">' + driver.code + '</li>';
+						return (
+							'<li class="driver">' +
+							' ' +
+							driver.permanentNumber +
+							' ' +
+							driver.code +
+							' ' +
+							driver.givenName +
+							' ' +
+							driver.familyName +
+							'</li>'
+						);
 					})
 					.join(' ') +
 				'</ul>';
